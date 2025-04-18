@@ -10,23 +10,36 @@ const HomePage = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    let isMounted = true;
+
     const getTrendingMovies = async () => {
       setLoading(true);
+      setError(null);
       try {
         const movies = await fetchTrendingMovies();
-        setTrendingMovies(movies);
+        if (isMounted) {
+          setTrendingMovies(movies);
+        }
       } catch (error) {
         console.error(
           'Error fetching trending movies:',
           error
         );
-        setError('Failed to load trending movies.');
+        if (isMounted) {
+          setError('Failed to load trending movies.');
+        }
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
     getTrendingMovies();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   if (loading) {

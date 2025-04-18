@@ -1,0 +1,27 @@
+.goBackBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #212121;
+  background-color: #f5f5f5;
+  border: 1px solid #bdbdbd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out,
+    color 0.3s ease-in-out;
+}
+
+.goBackBtn:hover,
+.goBackBtn:focus {
+  background-color: #e0e0e0;
+  color: #000;
+  border-color: #757575;
+}
+
+.goBackBtn:active {
+  background-color: #d6d6d6;
+}

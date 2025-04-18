@@ -7,21 +7,33 @@ const useFetch = (url, options = {}) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    let isMounted = true;
+
     const fetchData = async () => {
       setLoading(true);
       setError(null);
       try {
         const response = await axios(url, options);
-        setData(response.data);
+        if (isMounted) {
+          setData(response.data);
+        }
       } catch (err) {
-        setError(err);
+        if (isMounted) {
+          setError(err);
+        }
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
     fetchData();
-  }, [url, JSON.stringify(options)]); // Залежності: URL та опції (якщо вони змінюються)
+
+    return () => {
+      isMounted = false;
+    };
+  }, [url, JSON.stringify(options)]);
 
   return { data, loading, error };
 };

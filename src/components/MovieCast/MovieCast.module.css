@@ -1,0 +1,49 @@
+.movieCast {
+  padding: 20px;
+}
+
+.castList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.castItem {
+  flex-basis: calc(20% - 20px);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.actorPhoto {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.actorName {
+  padding: 8px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.actorCharacter {
+  padding: 0 8px 8px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #777;
+}
+
+@media (max-width: 768px) {
+  .castItem {
+    flex-basis: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .castItem {
+    flex-basis: 100%;
+  }
+}

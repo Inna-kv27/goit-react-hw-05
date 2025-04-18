@@ -17,19 +17,27 @@ const MoviesPage = () => {
   };
 
   useEffect(() => {
+    let isMounted = true;
+
     if (query) {
       const fetchSearchResults = async () => {
         setLoading(true);
         setError(null);
         try {
           const results = await searchMovies(query);
-          setSearchResults(results);
+          if (isMounted) {
+            setSearchResults(results);
+          }
         } catch (error) {
           console.error('Error searching movies:', error);
-          setError('Failed to load search results.');
-          setSearchResults([]);
+          if (isMounted) {
+            setError('Failed to load search results.');
+            setSearchResults([]);
+          }
         } finally {
-          setLoading(false);
+          if (isMounted) {
+            setLoading(false);
+          }
         }
       };
 
@@ -37,6 +45,10 @@ const MoviesPage = () => {
     } else {
       setSearchResults([]);
     }
+
+    return () => {
+      isMounted = false;
+    };
   }, [query]);
 
   return (

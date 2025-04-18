@@ -18,21 +18,33 @@ const MovieCast = () => {
   useEffect(() => {
     if (!movieId) return;
 
+    let isMounted = true;
+
     const getMovieCast = async () => {
       setLoading(true);
       setError(null);
       try {
         const credits = await fetchMovieCredits(movieId);
-        setCast(credits);
+        if (isMounted) {
+          setCast(credits);
+        }
       } catch (error) {
         console.error('Error fetching movie cast:', error);
-        setError('Failed to load cast.');
+        if (isMounted) {
+          setError('Failed to load cast information.');
+        }
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
     getMovieCast();
+
+    return () => {
+      isMounted = false;
+    };
   }, [movieId]);
 
   if (loading) {

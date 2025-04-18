@@ -1,0 +1,22 @@
+.moviesPage {
+  padding: 20px;
+}
+
+.moviesPage > form {
+  margin-bottom: 20px;
+}
+
+.moviesPage h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.moviesPage > p {
+  font-style: italic;
+  color: #777;
+}
+
+.moviesPage > div:last-child {
+  /* margin-top: 20px; */
+}

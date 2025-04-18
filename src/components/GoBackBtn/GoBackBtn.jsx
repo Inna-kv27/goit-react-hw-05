@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import styles from './GoBackBtn.module.css';
 
-const GoBackBtn = ({ to }) => {
+const GoBackBtn = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const backLink = useRef(

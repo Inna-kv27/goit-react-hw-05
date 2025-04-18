@@ -37,25 +37,37 @@ const MovieDetailsPage = () => {
   useEffect(() => {
     if (!movieId) return;
 
+    let isMounted = true;
+
     const getMovieDetails = async () => {
       setLoading(true);
       setError(null);
       try {
         const details = await fetchMovieDetails(movieId);
-        setMovie(details);
+        if (isMounted) {
+          setMovie(details);
+        }
       } catch (error) {
         console.error(
           `Error fetching details for movie ${movieId}:`,
           error
         );
-        setError('Failed to load movie details.');
-        setMovie(null);
+        if (isMounted) {
+          setError('Failed to load movie details.');
+          setMovie(null);
+        }
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
     getMovieDetails();
+
+    return () => {
+      isMounted = false;
+    };
   }, [movieId]);
 
   if (loading) {
