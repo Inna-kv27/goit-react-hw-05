@@ -5,6 +5,7 @@ import styles from './MovieReviews.module.css';
 
 const MovieReviews = () => {
   const { movieId } = useParams();
+  console.log('MovieReviews movieId:', movieId);
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -17,7 +18,11 @@ const MovieReviews = () => {
       setError(null);
       try {
         const data = await fetchMovieReviews(movieId);
-        setReviews(data?.results || []);
+        setReviews(
+          data && Array.isArray(data.results)
+            ? data.results
+            : []
+        );
       } catch (error) {
         console.error(
           'Error fetching movie reviews:',

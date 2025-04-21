@@ -9,12 +9,12 @@ import {
   Link,
   Outlet,
   useLocation,
+  useNavigate,
 } from 'react-router-dom';
 import {
   fetchMovieDetails,
   IMAGE_BASE_URL,
 } from '../../services/api';
-import GoBackBtn from '../../components/GoBackBtn/GoBackBtn';
 import styles from './MovieDetailsPage.module.css';
 
 const MovieCast = lazy(() =>
@@ -33,6 +33,7 @@ const MovieDetailsPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!movieId) return;
@@ -70,6 +71,10 @@ const MovieDetailsPage = () => {
     };
   }, [movieId]);
 
+  const handleGoBack = () => {
+    navigate(location?.state?.from || '/movies');
+  };
+
   if (loading) {
     return <div>Loading movie details...</div>;
   }
@@ -84,7 +89,12 @@ const MovieDetailsPage = () => {
 
   return (
     <div className={styles.movieDetailsPage}>
-      <GoBackBtn />
+      <button
+        onClick={handleGoBack}
+        className={styles.goBackBtn}
+      >
+        Go Back
+      </button>
       <div className={styles.movieInfo}>
         <img
           src={
