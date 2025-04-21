@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { searchMovies } from 'services/api';
-import MovieList from 'components/MovieList/MovieList';
-import SearchForm from 'components/SearchForm/SearchForm';
+import { searchMovies } from '../../services/api';
+import MovieList from '../../components/MovieList/MovieList';
+import SearchForm from '../../components/SearchForm/SearchForm';
 import styles from './MoviesPage.module.css';
 
 const MoviesPage = () => {

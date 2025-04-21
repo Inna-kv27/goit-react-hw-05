@@ -13,15 +13,15 @@ import {
 import {
   fetchMovieDetails,
   IMAGE_BASE_URL,
-} from 'services/api';
-import GoBackBtn from 'components/GoBackBtn/GoBackBtn';
+} from '../../services/api';
+import GoBackBtn from '../../components/GoBackBtn/GoBackBtn';
 import styles from './MovieDetailsPage.module.css';
 
 const MovieCast = lazy(() =>
-  import('components/MovieCast/MovieCast')
+  import('../../components/MovieCast/MovieCast')
 );
 const MovieReviews = lazy(() =>
-  import('components/MovieReviews/MovieReviews')
+  import('../../components/MovieReviews/MovieReviews')
 );
 
 const defaultImg =

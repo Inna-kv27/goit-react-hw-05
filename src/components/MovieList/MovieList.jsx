@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { IMAGE_BASE_URL } from 'services/api';
+import { IMAGE_BASE_URL } from '../../services/api';
 import styles from './MovieList.module.css';
 
 const MovieList = ({ movies }) => {

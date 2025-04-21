@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import {
   fetchMovieCredits,
   IMAGE_BASE_URL,
-} from 'services/api';
+} from '../../services/api';
 import styles from './MovieCast.module.css';
 
 const defaultImg =

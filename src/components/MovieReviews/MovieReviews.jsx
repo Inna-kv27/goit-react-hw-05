@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchMovieReviews } from 'services/api';
+import { fetchMovieReviews } from '../../services/api';
 import styles from './MovieReviews.module.css';
 
 const MovieReviews = () => {
@@ -17,7 +17,7 @@ const MovieReviews = () => {
       setError(null);
       try {
         const data = await fetchMovieReviews(movieId);
-        setReviews(data.results);
+        setReviews(data?.results || []);
       } catch (error) {
         console.error(
           'Error fetching movie reviews:',
