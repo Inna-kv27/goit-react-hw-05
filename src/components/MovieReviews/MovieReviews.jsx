@@ -18,11 +18,7 @@ const MovieReviews = () => {
       setError(null);
       try {
         const data = await fetchMovieReviews(movieId);
-        setReviews(
-          data && Array.isArray(data.results)
-            ? data.results
-            : []
-        );
+        setReviews(data);
       } catch (error) {
         console.error(
           'Error fetching movie reviews:',

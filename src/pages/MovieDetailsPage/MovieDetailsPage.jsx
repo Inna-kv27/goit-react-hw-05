@@ -72,7 +72,11 @@ const MovieDetailsPage = () => {
   }, [movieId]);
 
   const handleGoBack = () => {
-    navigate(location?.state?.from || '/movies');
+    if (location.pathname.includes('/reviews')) {
+      navigate('/');
+    } else {
+      navigate(location?.state?.from || '/movies');
+    }
   };
 
   if (loading) {

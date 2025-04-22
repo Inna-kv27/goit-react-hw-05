@@ -1,3 +1,4 @@
+/* src/components/MovieList/MovieList.module.css */
 .movieList {
   list-style: none;
   padding: 0;
@@ -14,11 +15,6 @@
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
-}
-
-.movieItem:hover {
-  transform: scale(1.03);
 }
 
 .movieLink {
@@ -33,23 +29,11 @@
   width: 100%;
   height: auto;
   display: block;
-  object-fit: cover;
-}
-
-.noPoster {
-  background-color: #f0f0f0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 225px;
-  color: #777;
-  font-size: 0.9rem;
-  text-align: center;
 }
 
 .movieTitle {
   padding: 10px;
-  font-size: 1rem;
   text-align: center;
-  margin-top: 5px;
+  font-size: 1rem;
+  margin-top: auto;
 }
