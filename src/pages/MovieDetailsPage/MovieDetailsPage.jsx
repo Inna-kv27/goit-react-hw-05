@@ -3,7 +3,7 @@ import React, {
   useEffect,
   Suspense,
   lazy,
-  useRef, // Імпортуємо useRef
+  useRef,
 } from 'react';
 import {
   useParams,
@@ -37,7 +37,7 @@ const MovieDetailsPage = () => {
   const navigate = useNavigate();
   const fromRef = useRef(
     location?.state?.from || '/movies'
-  ); // Використовуємо useRef для ініціалізації
+  );
 
   useEffect(() => {
     if (!movieId) return;
@@ -76,11 +76,7 @@ const MovieDetailsPage = () => {
   }, [movieId]);
 
   const handleGoBack = () => {
-    if (location.pathname.includes('/reviews')) {
-      navigate('/');
-    } else {
-      navigate(fromRef.current); // Використовуємо значення з useRef
-    }
+    navigate(fromRef.current);
   };
 
   if (loading) {
